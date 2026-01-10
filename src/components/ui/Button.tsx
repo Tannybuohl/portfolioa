@@ -79,7 +79,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             />
           </svg>
         ) : null}
-        {children}
+        {children as React.ReactNode}
       </motion.button>
     );
   }
