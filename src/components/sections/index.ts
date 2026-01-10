@@ -1,0 +1,12 @@
+export { Hero } from "./Hero";
+export { Services } from "./Services";
+export { Portfolio } from "./Portfolio";
+export { Benefits } from "./Benefits";
+export { Comparison } from "./Comparison";
+export { Process } from "./Process";
+export { DesignVsDev } from "./DesignVsDev";
+export { Pricing } from "./Pricing";
+export { Testimonials } from "./Testimonials";
+export { About } from "./About";
+export { Contact } from "./Contact";
+export { Stats } from "./Stats";
