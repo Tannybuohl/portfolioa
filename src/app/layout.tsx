@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   keywords: ["portfolio", "developer", "web development", "Raji Dewebs"],
   authors: [{ name: "Raji Dewebs" }],
   icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
   },
   openGraph: {
     title: "Raji Dewebs | Portfolio",
