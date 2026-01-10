@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 import { CalButton, FloatingElements, MagneticButton } from "@/components/ui";
@@ -26,7 +26,7 @@ const trustIndicators = [
 ];
 
 // Word animation variants
-const wordContainer = {
+const wordContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -37,7 +37,7 @@ const wordContainer = {
   },
 };
 
-const wordChild = {
+const wordChild: Variants = {
   hidden: {
     opacity: 0,
     y: 50,
@@ -48,7 +48,7 @@ const wordChild = {
     y: 0,
     rotateX: 0,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       damping: 12,
       stiffness: 100,
     },
