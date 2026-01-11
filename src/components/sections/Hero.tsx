@@ -1,9 +1,13 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, Variants, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 import { CalButton, FloatingElements, MagneticButton } from "@/components/ui";
+
+// Rotating words for the headline
+const rotatingWords = ["Repeat", "Demand"];
 
 // Lightning bolt icon component
 function LightningIcon({ className }: { className?: string }) {
@@ -54,6 +58,39 @@ const wordChild: Variants = {
     },
   },
 };
+
+// Rotating word component
+function RotatingWord() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % rotatingWords.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <span className="relative inline-block min-w-[180px] sm:min-w-[220px] md:min-w-[280px] lg:min-w-[340px]">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={rotatingWords[currentIndex]}
+          initial={{ opacity: 0, y: 30, rotateX: -60 }}
+          animate={{ opacity: 1, y: 0, rotateX: 0 }}
+          exit={{ opacity: 0, y: -30, rotateX: 60 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="absolute left-0 inline-block bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent"
+          style={{ transformOrigin: "bottom" }}
+        >
+          {rotatingWords[currentIndex]}
+        </motion.span>
+      </AnimatePresence>
+      {/* Invisible placeholder to maintain width */}
+      <span className="invisible">Demand</span>
+    </span>
+  );
+}
 
 // Animated headline component
 function AnimatedHeadline() {
@@ -118,10 +155,10 @@ function AnimatedHeadline() {
         ))}
         <motion.span
           variants={wordChild}
-          className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-200 bg-clip-text text-transparent"
+          className="inline-block"
           style={{ transformOrigin: "bottom" }}
         >
-          Repeat
+          <RotatingWord />
         </motion.span>
       </motion.span>
     </motion.h1>
