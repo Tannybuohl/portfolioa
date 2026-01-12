@@ -190,48 +190,48 @@ const caseStudies: CaseStudy[] = [
   },
   {
     id: "5",
-    title: "Food Delivery Mobile App",
+    title: "Real Estate & Property App",
     category: "App Development",
     description:
-      "Cross-platform mobile app for food ordering and delivery with real-time tracking.",
+      "Luxury real estate app for discovering, viewing, and booking premium properties with mortgage tools.",
     fullDescription:
-      "Developed a full-featured food delivery mobile application that helps users discover restaurants, browse menus, and order their favorite meals with real-time delivery tracking.",
+      "Developed a sleek real estate mobile application featuring futuristic property listings, mortgage calculators, and seamless property booking. The dark theme with yellow accents creates a premium, luxury feel.",
     challenge:
-      "Users needed a fast, reliable food ordering app with seamless payment integration and real-time order tracking across iOS and Android platforms.",
+      "Home buyers needed an intuitive app to browse luxury properties, calculate mortgages, and book viewings without the hassle of multiple platforms.",
     solution:
-      "Built a cross-platform app with React Native featuring restaurant discovery, smart search filters, easy cart management, secure payments, and live GPS tracking for deliveries.",
+      "Built a cross-platform app with React Native featuring property discovery with filters, detailed listings with beds/baths/area info, mortgage success guides, favorites, and instant booking for property viewings.",
     image: "/project-5.jpg",
     results: [
-      { metric: "45%", value: "45", label: "More Orders" },
+      { metric: "50K+", value: "50000", label: "Downloads" },
       { metric: "4.9★", value: "4.9", label: "App Rating" },
-      { metric: "70%", value: "70", label: "Reorder Rate" },
+      { metric: "85%", value: "85", label: "User Satisfaction" },
     ],
     technologies: ["React Native", "Firebase", "Stripe", "Google Maps API"],
-    clientName: "FoodieHub",
-    duration: "10 weeks",
+    clientName: "LuxeHomes",
+    duration: "12 weeks",
     year: "2024",
   },
   {
     id: "6",
-    title: "Travel Booking Mobile App",
+    title: "Grocery & Fresh Food App",
     category: "App Development",
     description:
-      "Cross-platform travel booking app for discovering destinations and booking trips.",
+      "Fresh grocery delivery app with smart combo picks, category browsing, and fast checkout.",
     fullDescription:
-      "Developed a comprehensive travel booking mobile application that allows users to discover destinations, compare prices, book flights and hotels, and manage their itineraries all in one place.",
+      "Developed a vibrant grocery delivery mobile application with the tagline 'Pure Freshness in Every Tap'. Features smart combo picks, category-based browsing (Fruits, Vegetables, Dairy, Meat, Bakery), and seamless ordering experience.",
     challenge:
-      "Travelers needed a unified app to search, compare, and book travel options without switching between multiple platforms.",
+      "Users wanted a fresh, intuitive grocery app that made shopping for produce fast and enjoyable with smart recommendations and easy navigation.",
     solution:
-      "Built a cross-platform mobile app with React Native featuring destination discovery, price comparison, secure booking, itinerary management, and offline access to travel documents.",
+      "Built a cross-platform app with React Native featuring fresh produce categories, smart combo picks, daily deals, quick search, easy cart management, and fast delivery tracking with an inviting orange/coral theme.",
     image: "/project-6.jpg",
     results: [
-      { metric: "100K+", value: "100000", label: "Downloads" },
-      { metric: "3x", value: "3", label: "Bookings" },
-      { metric: "4.9★", value: "4.9", label: "App Rating" },
+      { metric: "80K+", value: "80000", label: "Downloads" },
+      { metric: "4.8★", value: "4.8", label: "App Rating" },
+      { metric: "65%", value: "65", label: "Reorder Rate" },
     ],
     technologies: ["React Native", "Node.js", "MongoDB", "Stripe"],
-    clientName: "TravelEase",
-    duration: "12 weeks",
+    clientName: "FreshMart",
+    duration: "10 weeks",
     year: "2024",
   },
   {

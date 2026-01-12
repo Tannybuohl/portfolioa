@@ -243,14 +243,14 @@ export function Hero() {
         animate="visible"
         className="relative z-10 mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8"
       >
-        {/* Badges Container - Centered */}
-        <div className="mb-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+        {/* Badges Container - Centered, stacked on mobile */}
+        <div className="mb-6 flex flex-col items-center justify-center gap-2 sm:mb-8 sm:flex-row sm:gap-4">
           {/* Badge with bounce animation */}
           <motion.div
             initial={{ opacity: 0, y: -20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ type: "spring", damping: 10, stiffness: 100 }}
-            className="inline-flex items-center gap-3 rounded-full border border-zinc-800 bg-zinc-900/80 px-5 py-2.5 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/80 px-3 py-2 text-xs backdrop-blur-sm sm:gap-3 sm:px-5 sm:py-2.5 sm:text-sm"
           >
             <span className="relative flex h-3 w-3">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400 opacity-75" />
@@ -267,11 +267,11 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, type: "spring", damping: 12 }}
-            className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-2.5 backdrop-blur-sm"
+            className="inline-flex items-center gap-1.5 rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-2 backdrop-blur-sm sm:gap-2 sm:px-4 sm:py-2.5"
           >
-            <span className="text-lg">🔥</span>
-            <span className="text-sm font-semibold text-orange-400">
-              Only 2 Spots Left This Month
+            <span className="text-base sm:text-lg">🔥</span>
+            <span className="text-xs font-semibold text-orange-400 sm:text-sm">
+              Only 2 Spots Left
             </span>
           </motion.div>
         </div>

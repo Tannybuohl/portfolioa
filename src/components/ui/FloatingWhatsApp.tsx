@@ -11,7 +11,7 @@ export function FloatingWhatsApp() {
       href={fiverrUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="glow-button-green fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center overflow-hidden rounded-full shadow-lg transition-all hover:shadow-xl md:h-16 md:w-16"
+      className="glow-button-green fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center overflow-hidden rounded-full shadow-lg transition-all hover:shadow-xl sm:bottom-6 sm:right-6 sm:h-14 sm:w-14 md:h-16 md:w-16"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1, type: "spring", stiffness: 200 }}

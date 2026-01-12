@@ -40,11 +40,11 @@ export function StickyMobileCTA() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed bottom-0 left-0 right-0 z-40 border-t border-zinc-800 bg-zinc-950/95 p-4 backdrop-blur-lg md:hidden"
+          className="fixed bottom-0 left-0 right-0 z-40 border-t border-zinc-800 bg-zinc-950/95 px-4 py-3 backdrop-blur-lg md:hidden"
         >
           <button
             onClick={scrollToContact}
-            className="flex w-full items-center justify-center gap-2 rounded-full bg-yellow-400 py-4 text-base font-bold text-zinc-900 shadow-lg transition-all active:scale-[0.98]"
+            className="flex w-full items-center justify-center gap-2 rounded-full bg-yellow-400 py-3 text-sm font-bold text-zinc-900 shadow-lg transition-all active:scale-[0.98] sm:py-4 sm:text-base"
           >
             <span>Get Started Today</span>
             <svg
