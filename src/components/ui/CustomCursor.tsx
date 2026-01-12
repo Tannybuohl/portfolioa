@@ -21,8 +21,8 @@ export function CustomCursor() {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
 
-  // Spring configuration for smooth following
-  const springConfig = { damping: 25, stiffness: 400, mass: 0.5 };
+  // Spring configuration for fast, responsive following
+  const springConfig = { damping: 50, stiffness: 1000, mass: 0.1 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
