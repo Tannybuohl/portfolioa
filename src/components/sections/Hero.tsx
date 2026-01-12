@@ -9,6 +9,9 @@ import { CalButton, FloatingElements, MagneticButton } from "@/components/ui";
 // Rotating words for the headline
 const rotatingWords = ["Repeat", "Demand"];
 
+// Rotating team types
+const teamTypes = ["WEB DEVELOPERS", "APP DEVELOPERS", "UI/UX DESIGNERS"];
+
 // Lightning bolt icon component
 function LightningIcon({ className }: { className?: string }) {
   return (
@@ -92,6 +95,59 @@ function RotatingWord() {
   );
 }
 
+// Typewriter team type component
+function RotatingTeamType() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+
+  useEffect(() => {
+    const currentWord = teamTypes[currentIndex];
+    let timeout: NodeJS.Timeout;
+
+    if (isTyping) {
+      // Typing forward
+      if (displayText.length < currentWord.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(currentWord.slice(0, displayText.length + 1));
+        }, 80); // Typing speed
+      } else {
+        // Finished typing, wait then start deleting
+        timeout = setTimeout(() => {
+          setIsTyping(false);
+        }, 2000); // Pause before deleting
+      }
+    } else {
+      // Typing backward (deleting)
+      if (displayText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayText(displayText.slice(0, -1));
+        }, 50); // Deleting speed (faster)
+      } else {
+        // Finished deleting, move to next word
+        setCurrentIndex((prev) => (prev + 1) % teamTypes.length);
+        setIsTyping(true);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isTyping, currentIndex]);
+
+  return (
+    <span className="inline-flex items-center">
+      <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-orange-400 bg-clip-text font-black text-transparent">
+        {displayText}
+      </span>
+      {/* Blinking cursor */}
+      <motion.span
+        animate={{ opacity: [1, 0] }}
+        transition={{ duration: 0.6, repeat: Infinity, repeatType: "reverse" }}
+        className="ml-0.5 inline-block h-[1em] w-[2px] bg-yellow-400"
+      />
+    </span>
+  );
+}
+
 // Animated headline component
 function AnimatedHeadline() {
   const line1 = ["World", "Class", "Websites", "That"];
@@ -100,7 +156,7 @@ function AnimatedHeadline() {
 
   return (
     <motion.h1
-      className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+      className="shimmer-text mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
       style={{ perspective: "1000px" }}
     >
       <motion.span
@@ -167,7 +223,7 @@ function AnimatedHeadline() {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-black pb-8 pt-32 md:pb-12 md:pt-40">
+    <section id="home" className="relative overflow-hidden bg-black pb-8 pt-32 md:pb-12 md:pt-40">
       {/* Background gradient */}
       <div className="pointer-events-none absolute inset-0">
         {/* Main gradient overlay */}
@@ -187,22 +243,38 @@ export function Hero() {
         animate="visible"
         className="relative z-10 mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8"
       >
-        {/* Badge with bounce animation */}
-        <motion.div
-          initial={{ opacity: 0, y: -20, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ type: "spring", damping: 10, stiffness: 100 }}
-          className="mb-8 inline-flex items-center gap-3 rounded-full border border-zinc-800 bg-zinc-900/80 px-5 py-2.5 backdrop-blur-sm"
-        >
-          <span className="relative flex h-3 w-3">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400 opacity-75" />
-            <span className="relative inline-flex h-3 w-3 rounded-full bg-yellow-400" />
-          </span>
-          <span className="text-sm font-medium text-zinc-300">
-            Projects Open for{" "}
-            <span className="font-semibold text-white">January</span>
-          </span>
-        </motion.div>
+        {/* Badges Container - Centered */}
+        <div className="mb-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+          {/* Badge with bounce animation */}
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ type: "spring", damping: 10, stiffness: 100 }}
+            className="inline-flex items-center gap-3 rounded-full border border-zinc-800 bg-zinc-900/80 px-5 py-2.5 backdrop-blur-sm"
+          >
+            <span className="relative flex h-3 w-3">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-yellow-400 opacity-75" />
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-yellow-400" />
+            </span>
+            <span className="text-sm font-medium text-zinc-300">
+              Projects Open for{" "}
+              <span className="font-semibold text-white">January</span>
+            </span>
+          </motion.div>
+
+          {/* Availability/Urgency Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, type: "spring", damping: 12 }}
+            className="inline-flex items-center gap-2 rounded-full border border-orange-500/30 bg-orange-500/10 px-4 py-2.5 backdrop-blur-sm"
+          >
+            <span className="text-lg">🔥</span>
+            <span className="text-sm font-semibold text-orange-400">
+              Only 2 Spots Left This Month
+            </span>
+          </motion.div>
+        </div>
 
         {/* Animated Main Headline */}
         <AnimatedHeadline />
@@ -212,24 +284,39 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.6 }}
-          className="mx-auto mb-10 max-w-2xl text-base text-zinc-400 sm:text-lg md:text-xl"
+          className="mx-auto mb-6 max-w-2xl text-base text-zinc-400 sm:text-lg md:text-xl"
         >
           From Figma Website Designs to Pixel Perfect
           <br className="hidden sm:block" />
           Developed Next.js 15 Website.
         </motion.p>
 
+        {/* Rotating Team Type - Subtle/Tiny */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.6 }}
+          className="mb-8 flex items-center justify-center gap-2 text-center"
+        >
+          <span className="text-xs font-medium uppercase tracking-widest text-zinc-500">
+            A team of senior
+          </span>
+          <span className="text-xs font-bold uppercase tracking-wider sm:text-sm">
+            <RotatingTeamType />
+          </span>
+        </motion.div>
+
         {/* CTA Buttons with magnetic effect */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4, duration: 0.6 }}
+          transition={{ delay: 1.6, duration: 0.6 }}
           className="mb-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6"
         >
           <MagneticButton strength={0.2}>
             <CalButton
               calLink="taiwo-uuuogw/15-min-meeting-or-discovery-call"
-              className="h-14 w-full px-10 shadow-lg shadow-yellow-400/20 hover:shadow-xl hover:shadow-yellow-400/30 sm:w-auto"
+              className="glow-button h-14 w-full px-10 sm:w-auto"
             >
               Book a Call
             </CalButton>
@@ -248,7 +335,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.6, duration: 0.6 }}
+          transition={{ delay: 1.8, duration: 0.6 }}
           className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8 md:gap-12"
         >
           {trustIndicators.map((indicator, index) => (
@@ -256,7 +343,7 @@ export function Hero() {
               key={index}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.8 + index * 0.15 }}
+              transition={{ delay: 2.0 + index * 0.15 }}
               whileHover={{ scale: 1.05, x: 5 }}
               className="flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-zinc-300"
             >

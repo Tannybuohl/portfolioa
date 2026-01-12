@@ -47,7 +47,7 @@ function WhatsAppIcon() {
 }
 
 const navLinks = [
-  { name: "Home", href: "#" },
+  { name: "Home", href: "#home" },
   { name: "Services", href: "#services" },
   { name: "Work", href: "#work" },
   { name: "Pricing", href: "#pricing" },

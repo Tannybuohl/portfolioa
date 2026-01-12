@@ -183,3 +183,82 @@ section {
 .hover-glow:hover {
   box-shadow: 0 0 30px rgba(250, 204, 21, 0.3);
 }
+
+/* Shimmer text effect */
+@keyframes text-shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #ffffff 40%,
+    #facc15 50%,
+    #ffffff 60%,
+    #ffffff 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shimmer 3s ease-in-out infinite;
+}
+
+/* Glowing button animation - Yellow for CTA */
+@keyframes button-glow-yellow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(250, 204, 21, 0.4),
+                0 0 40px rgba(250, 204, 21, 0.2),
+                0 0 60px rgba(250, 204, 21, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(250, 204, 21, 0.6),
+                0 0 60px rgba(250, 204, 21, 0.4),
+                0 0 90px rgba(250, 204, 21, 0.2);
+  }
+}
+
+/* Glowing button animation - Green for Fiverr */
+@keyframes button-glow-green {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(29, 191, 115, 0.4),
+                0 0 40px rgba(29, 191, 115, 0.2),
+                0 0 60px rgba(29, 191, 115, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(29, 191, 115, 0.6),
+                0 0 60px rgba(29, 191, 115, 0.4),
+                0 0 90px rgba(29, 191, 115, 0.2);
+  }
+}
+
+.glow-button {
+  animation: button-glow-yellow 2s ease-in-out infinite;
+}
+
+.glow-button-green {
+  animation: button-glow-green 2s ease-in-out infinite;
+}
+
+/* Infinite marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

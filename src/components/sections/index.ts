@@ -10,3 +10,6 @@ export { Testimonials } from "./Testimonials";
 export { About } from "./About";
 export { Contact } from "./Contact";
 export { Stats } from "./Stats";
+export { TrustedBy } from "./TrustedBy";
+export { CaseStudies } from "./CaseStudies";
+export { QuoteCalculator } from "./QuoteCalculator";
